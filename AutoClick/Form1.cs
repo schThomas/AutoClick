@@ -43,18 +43,6 @@ namespace AutoClick
             return time;
         }
 
-        private int set_cbIndex(ListView list)
-        {
-            int ind = 0;
-            switch (list.SelectedItems[0].SubItems[0].Text)
-            {
-                case "Left mouse button":
-                    MessageBox.Show("a");
-                    break;
-            }
-            return ind;
-        }
-
         private void bt_edit_Click(object sender, EventArgs e)
         {
             if (lv_commands.SelectedItems.Count > 0)
@@ -105,7 +93,7 @@ namespace AutoClick
                 {
                     case "Left mouse button":
                         Exec.MouseClick(MKeys.Left);
-                        break;
+                        break; 
                     case "Right mouse button":
                         Exec.MouseClick(MKeys.Right);
                         break;
