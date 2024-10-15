@@ -75,7 +75,10 @@ namespace AutoClick
 
         private void bt_delete_Click(object sender, EventArgs e)
         {
-            lv_commands.SelectedItems[0].Remove();
+            if (lv_commands.SelectedItems.Count > 0)
+            {
+                lv_commands.SelectedItems[0].Remove();
+            }
         }
 
         private void bt_start_Click(object sender, EventArgs e)
@@ -88,17 +91,31 @@ namespace AutoClick
                 int.TryParse(l.SubItems[2].Text, out x);
                 int.TryParse(l.SubItems[3].Text, out y);
                 Thread.Sleep(wtime);
-                Exec.SetCursorPosition(new KlusterG.AutoGui.Mouse { X = x, Y = y});
+                Exec.SetCursorPosition(new KlusterG.AutoGui.Mouse { X = x, Y = y });
                 switch (l.SubItems[0].Text)
                 {
                     case "Left mouse button":
                         Exec.MouseClick(MKeys.Left);
-                        break; 
+                        break;
                     case "Right mouse button":
                         Exec.MouseClick(MKeys.Right);
                         break;
                 }
             }
+        }
+
+        private void AutoClick_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.ToString().ToLower() == "g")
+            {
+                tb_x.Text = Exec.GetCursorPosition().X.ToString();
+                tb_y.Text = Exec.GetCursorPosition().Y.ToString();
+            }
+        }
+
+        private void bt_clear_Click(object sender, EventArgs e)
+        {
+            lv_commands.Items.Clear();
         }
     }
 }

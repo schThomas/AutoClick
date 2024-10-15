@@ -46,6 +46,7 @@
             bt_edit = new Button();
             bt_delete = new Button();
             bt_start = new Button();
+            bt_clear = new Button();
             SuspendLayout();
             // 
             // lv_commands
@@ -53,7 +54,7 @@
             lv_commands.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4 });
             lv_commands.Location = new Point(201, 12);
             lv_commands.Name = "lv_commands";
-            lv_commands.Size = new Size(297, 234);
+            lv_commands.Size = new Size(297, 243);
             lv_commands.TabIndex = 0;
             lv_commands.UseCompatibleStateImageBehavior = false;
             lv_commands.View = View.Details;
@@ -190,7 +191,7 @@
             // 
             // bt_start
             // 
-            bt_start.Location = new Point(66, 203);
+            bt_start.Location = new Point(66, 232);
             bt_start.Name = "bt_start";
             bt_start.Size = new Size(75, 23);
             bt_start.TabIndex = 14;
@@ -198,11 +199,22 @@
             bt_start.UseVisualStyleBackColor = true;
             bt_start.Click += bt_start_Click;
             // 
+            // bt_clear
+            // 
+            bt_clear.Location = new Point(66, 203);
+            bt_clear.Name = "bt_clear";
+            bt_clear.Size = new Size(75, 23);
+            bt_clear.TabIndex = 15;
+            bt_clear.Text = "Clear";
+            bt_clear.UseVisualStyleBackColor = true;
+            bt_clear.Click += bt_clear_Click;
+            // 
             // AutoClick
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(510, 258);
+            ClientSize = new Size(513, 267);
+            Controls.Add(bt_clear);
             Controls.Add(bt_start);
             Controls.Add(bt_delete);
             Controls.Add(bt_edit);
@@ -218,9 +230,12 @@
             Controls.Add(lbl_action);
             Controls.Add(lv_commands);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            ImeMode = ImeMode.On;
+            KeyPreview = true;
             MaximizeBox = false;
             Name = "AutoClick";
             Text = "AutoClick";
+            KeyPress += AutoClick_KeyPress;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -245,5 +260,6 @@
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
+        private Button bt_clear;
     }
 }
